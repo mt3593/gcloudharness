@@ -100,7 +100,7 @@ public class TestHarness {
         try {
             subscriber = Subscriber.newBuilder(subscription.getNameAsSubscriptionName(), receiver)
                     .setMaxAckExtensionPeriod(Duration.ofHours(8))
-                    .setExecutorProvider(InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(5).build())
+                    .setExecutorProvider(InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(6).build())
                     .setParallelPullCount(8)
                     .setFlowControlSettings(FlowControlSettings.newBuilder().setMaxOutstandingElementCount(5l).build())
                     .build();
