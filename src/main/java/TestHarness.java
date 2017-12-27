@@ -23,7 +23,7 @@ public class TestHarness {
     private static final String TEST_TOPIC = "test-dup-message";
     private static final String SUBSCRIPTION_NAME = "dup-message-subscription";
     private static final int ACK_DEADLINE_IN_SECONDS = 10;
-    private static final long NO_OF_MESSAGES = 5;
+    private static final long NO_OF_MESSAGES = 10;
 
     private static String currentTime() {
         return DateTime.now().toString();
@@ -100,9 +100,9 @@ public class TestHarness {
         try {
             subscriber = Subscriber.newBuilder(subscription.getNameAsSubscriptionName(), receiver)
                     .setMaxAckExtensionPeriod(Duration.ofHours(8))
-                    .setExecutorProvider(InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(7).build())
-                    .setParallelPullCount(6)
-                    .setFlowControlSettings(FlowControlSettings.newBuilder().setMaxOutstandingElementCount(5l).build())
+                    .setExecutorProvider(InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(10).build())
+                    .setParallelPullCount(11)
+                    .setFlowControlSettings(FlowControlSettings.newBuilder().setMaxOutstandingElementCount(8l).build())
                     .build();
             subscriber.addListener(
                     new Subscriber.Listener() {
