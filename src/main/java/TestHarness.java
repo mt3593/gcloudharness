@@ -114,7 +114,7 @@ public class TestHarness {
                     },
                     MoreExecutors.directExecutor());
             subscriber.startAsync().awaitRunning();
-            Thread.sleep(TimeUnit.MINUTES.toMillis(30));
+            Thread.sleep(TimeUnit.HOURS.toMillis(2));
             System.out.println("finished: " + currentTime());
             System.out.println(publishResults);
         } finally {
