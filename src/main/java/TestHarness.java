@@ -1,5 +1,3 @@
-import com.google.api.gax.batching.FlowControlSettings;
-import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.rpc.AlreadyExistsException;
 import com.google.cloud.pubsub.v1.*;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -100,9 +98,6 @@ public class TestHarness {
         try {
             subscriber = Subscriber.newBuilder(subscription.getNameAsSubscriptionName(), receiver)
                     .setMaxAckExtensionPeriod(Duration.ofHours(8))
-                    .setExecutorProvider(InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(7).build())
-                    .setParallelPullCount(6)
-                    .setFlowControlSettings(FlowControlSettings.newBuilder().setMaxOutstandingElementCount(5l).build())
                     .build();
             subscriber.addListener(
                     new Subscriber.Listener() {
